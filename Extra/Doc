@@ -5,16 +5,11 @@ Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zachisfunny
     fileext = '.json'
 })
 
+local Options = Library.options
 Utility = Library.utility
 Library:init()
 
-local Options = Library.options
-if not IonHub_User then
-    getgenv().IonHub_User = {
-        UID = 0, 
-        User = "admin"
-    }
-end
+
 
 --New window
 local Utility, Window, Tabs, Sections, Settings = Library.utility, nil, {}, {}, nil; do
