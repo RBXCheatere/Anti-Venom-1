@@ -24,36 +24,36 @@ Combat = Window:AddTab("Combat")
 Aimbotsection = Combat:AddSection("Aimbot", 1)
 
 --New Button
-Aimbotsection:AddButton({text = "Button",  callback = function()
+Aimbotsection:AddButton({text = "Button", risky = false, callback = function()
 
 end});
 
 --New Toggle
-Aimbotsection:AddToggle({text = "Toggle", tooltip = "", flag = "", callback = function(state)
+Aimbotsection:AddToggle({text = "Toggle", tooltip = "", flag = "", risky = false, callback = function(state)
 
 end})
 
 --New Slider
-Aimbotsection:AddSlider({text = "Slider", flag = "", enabled = true, suffix = "", min = 1, max = 5000, value = 1000, callback = function(Value)
+Aimbotsection:AddSlider({text = "Slider", flag = "", enabled = true, suffix = "", min = 1, max = 5000, value = 1000, risky = false, callback = function(Value)
 
 end})
 
 --New Dropdown
-Aimbotsection:AddList({text = "Dropdown", flag = "", tooltip = "", enabled = true, selected = "", values = {"", ""}, callback = function(Position)
+Aimbotsection:AddList({text = "Dropdown", flag = "", tooltip = "", enabled = true, selected = "", values = {"", ""}, risky = false, callback = function(Position)
 
 end})
 
 --New KeyBind
-Aimbotsection:AddBind({text = "KeyBind", flag = "", tooltip = "", mode = "toggle", callback = function(State)
+Aimbotsection:AddBind({text = "KeyBind", flag = "", tooltip = "", mode = "toggle", risky = false, callback = function(State)
 
 end});
 
 --New TextBox
-Aimbotsection:AddBox({text = "TextBox", flag = "", enabled = true, input = "", callback = function(txt)
+Aimbotsection:AddBox({text = "TextBox", flag = "", enabled = true, input = "", risky = false, callback = function(txt)
 
 end});
 
 --New ColorPicker
-Aimbotsection:AddColor({text = "ColorPicker", flag = "", enabled = true, color = Color3.fromRGB(40, 252, 3), callback = function(Color)
+Aimbotsection:AddColor({text = "ColorPicker", flag = "", enabled = true, color = Color3.fromRGB(40, 252, 3), risky = false, callback = function(Color)
 
 end});
