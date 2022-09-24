@@ -1,5 +1,3 @@
-    local options = library.options;
-
     local settings = menu:AddTab("Settings"); do 
         local theme_section = settings:AddSection("Theme", 1); do
             local theme_strings = {"Custom"};
