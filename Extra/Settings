@@ -113,5 +113,6 @@
             main_section:AddButton({text = "Unload", callback = function()
                 Library:Unload()
                 end});
-    return settings
+        return settings
+    end
 end
