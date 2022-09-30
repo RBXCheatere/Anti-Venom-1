@@ -5,8 +5,8 @@ Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zachisfunny
     fileext = '.json'
 })
 
-local flags = Library.flags
-local Options = Library.options
+flags = Library.flags
+Options = Library.options
 Utility = Library.utility
 Library:init()
 
