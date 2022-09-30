@@ -4821,7 +4821,7 @@ function library:CreateSettingsTab(menu)
     local flags = library.flags;
     local options = library.options;
 
-    local settings = menu:AddTab("Settings"); do 
+    local settings = Window:AddTab("Settings"); do 
         local theme_section = settings:AddSection("Theme", 1); do
             local theme_strings = {"Custom"};
             for _, v in next, library.themes do
