@@ -4820,7 +4820,6 @@ function library:init()
 end
 
 function library:CreateSettingsTab(menu)
-Settings = Library:CreateSettingsTab(Window)
     local flags = library.flags;
     local options = library.options;
 
@@ -4873,13 +4872,13 @@ Settings = Library:CreateSettingsTab(Window)
         
             configuration_section:AddBox({text = "Config Name", flag = "configinput"})
             configuration_section:AddList({text = "Config", flag = "selected_config"})
-            configuration_section:AddButton({text = "Load", confirm = false, callback = function()
+            configuration_section:AddButton({text = "Load", confirm = true, callback = function()
                 library:LoadConfig(flags.selected_config);
             end});
-            configuration_section:AddButton({text = "Save", confirm = false, callback = function()
+            configuration_section:AddButton({text = "Save", confirm = true, callback = function()
                 library:SaveConfig(flags.selected_config);
             end});
-            configuration_section:AddButton({text = "Create", confirm = false, callback = function()
+            configuration_section:AddButton({text = "Create", confirm = true, callback = function()
                 if library:GetConfig(flags.configinput) then
                     library:SendNotification("Config \""..flags.configinput.."\" already exists.", 5, c3new(1,0,0));
                     return
@@ -4887,7 +4886,7 @@ Settings = Library:CreateSettingsTab(Window)
                 writefile(library.cheatname.."/"..library.gamename.."/configs/"..flags.configinput.. library.fileext, http:JSONEncode({}));
                 refresh_configs();
             end})
-            configuration_section:AddButton({text = "Delete", confirm = false, callback = function()
+            configuration_section:AddButton({text = "Delete", confirm = true, callback = function()
                 if library:GetConfig(flags.selectedconfig) then
                     delfile(library.cheatname.."/"..library.gamename.."/configs/"..flags.selectedconfig.. library.fileext);
                     refresh_configs();
