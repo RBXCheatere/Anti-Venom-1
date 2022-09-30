@@ -2,3 +2,8 @@
     Options.what_u_want_to_be_visible_or_not.enabled = state
     Options.toggle_flag_or_list_flag:UpdateOptions()
     section_name:UpdateSections()
+
+--Unload Function
+Utility:Connection(Library.unloaded, LPH_JIT_MAX(function()
+
+end))
