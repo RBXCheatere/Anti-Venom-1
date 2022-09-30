@@ -4873,13 +4873,13 @@ Settings = Library:CreateSettingsTab(Window)
         
             configuration_section:AddBox({text = "Config Name", flag = "configinput"})
             configuration_section:AddList({text = "Config", flag = "selected_config"})
-            configuration_section:AddButton({text = "Load", confirm = true, callback = function()
+            configuration_section:AddButton({text = "Load", confirm = false, callback = function()
                 library:LoadConfig(flags.selected_config);
             end});
-            configuration_section:AddButton({text = "Save", confirm = true, callback = function()
+            configuration_section:AddButton({text = "Save", confirm = false, callback = function()
                 library:SaveConfig(flags.selected_config);
             end});
-            configuration_section:AddButton({text = "Create", confirm = true, callback = function()
+            configuration_section:AddButton({text = "Create", confirm = false, callback = function()
                 if library:GetConfig(flags.configinput) then
                     library:SendNotification("Config \""..flags.configinput.."\" already exists.", 5, c3new(1,0,0));
                     return
