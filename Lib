@@ -4820,6 +4820,7 @@ function library:init()
 end
 
 function library:CreateSettingsTab(menu)
+Settings = Library:CreateSettingsTab(Window)
     local flags = library.flags;
     local options = library.options;
 
