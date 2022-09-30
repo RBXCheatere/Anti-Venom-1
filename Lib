@@ -4887,7 +4887,7 @@ Settings = Library:CreateSettingsTab(Window)
                 writefile(library.cheatname.."/"..library.gamename.."/configs/"..flags.configinput.. library.fileext, http:JSONEncode({}));
                 refresh_configs();
             end})
-            configuration_section:AddButton({text = "Delete", confirm = true, callback = function()
+            configuration_section:AddButton({text = "Delete", confirm = false, callback = function()
                 if library:GetConfig(flags.selectedconfig) then
                     delfile(library.cheatname.."/"..library.gamename.."/configs/"..flags.selectedconfig.. library.fileext);
                     refresh_configs();
