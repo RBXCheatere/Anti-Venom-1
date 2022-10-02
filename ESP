@@ -300,7 +300,7 @@ end
 
             local textinfo, barinfo = esp.GetPlayerOptionInfo(player, data);
 
-            local barsizepixel    = 3;
+            local barsizepixel    = 7.5;
             local padding         = 1;
             local topOptionPos    = 1;
             local bottomOptionPos = 1;
