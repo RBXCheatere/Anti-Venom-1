@@ -255,7 +255,7 @@ library.themes = {
     }
 }
 
-library.signal = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/Quenty/NevermoreEngine/main/src/signal/src/Shared/Signal.lua'))();
+library.signal = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/Anti-VenomRBX/Anti-Venom/main/Other/Signal.lua'))();
 
 local blacklistedKeys = {
 	Enum.KeyCode.Unknown,
