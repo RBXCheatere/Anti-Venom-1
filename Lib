@@ -4908,33 +4908,6 @@ function library:CreateSettingsTab(menu)
             end});
             refresh_configs();
         end;
-        --
-        local scripts_section = settings:AddSection("Scripts", 2); do
-            local function refresh_scripts()
-                options.selected_script:ClearValues();
-                for _,v in next, listfiles(library.cheatname .."/" .. library.gamename .. "/scripts") do
-                    local ext = "."..v:split(".")[#v:split(".")];
-                    if ext == ".lua" then
-                        options.selected_script:AddValue(v:split("\\")[#v:split("\\")]:sub(1,-#ext-1))
-                    end
-                end
-            end
-        
-            scripts_section:AddList({text = "Script", flag = "selected_script"})
-            scripts_section:AddButton({text = "Load", confirm = true, callback = function()
-                loadfile(library.cheatname.."/"..library.gamename.."/scripts/"..flags.selected_script.. ".lua")();
-            end});
-            scripts_section:AddButton({text = "Delete", confirm = true, callback = function()
-                if library:GetConfig(flags.selected_script) then
-                    delfile(library.cheatname.."/"..library.gamename.."/scripts/"..flags.selected_script.. ".lua");
-                    refresh_scripts();
-                end;
-            end});
-            scripts_section:AddButton({text = "Refresh", callback = function()
-                refresh_scripts();
-            end});
-            refresh_scripts();
-        end;
         -- 
         local main_section = settings:AddSection("Main", 2); do
             main_section:AddBind({text = "Open / Close", flag = "togglebind", nomouse = true, noindicator = true, bind = Enum.KeyCode.End, callback = function()
