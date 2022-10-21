@@ -17,3 +17,6 @@ end
 Utility:Connection(Library.unloaded, LPH_JIT_MAX(function()
 
 end))
+
+--Divider
+Aimbot:AddSeparator({text = 'seperator'})
