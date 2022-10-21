@@ -4870,42 +4870,42 @@ function library:CreateSettingsTab(menu)
             end;
         end;
         -- 
-        local configSection = settings:AddSection("Configuration", 2); do
-    configSection:AddBox({text = 'Config Name', flag = 'configinput'})
-    configSection:AddList({text = 'Config', flag = 'selectedconfig'})
-
-    local function refreshConfigs()
-        library.options.selectedconfig:ClearValues();
-        for _,v in next, listfiles(self.cheatname..'/'..self.gamename..'/configs') do
-            local ext = '.'..v:split('.')[#v:split('.')];
-            if ext == self.fileext then
-                library.options.selectedconfig:AddValue(v:split('\\')[#v:split('\\')]:sub(1,-#ext-1))
+        local configuration_section = settings:AddSection("Configuration", 2); do
+            local function refresh_configs()
+                options.selected_config:ClearValues();
+                for _,v in next, listfiles(library.cheatname .."/" .. library.gamename .. "/configs") do
+                    local ext = "."..v:split(".")[#v:split(".")];
+                    if ext == library.fileext then
+                        options.selected_config:AddValue(v:split("\\")[#v:split("\\")]:sub(1,-#ext-1))
+                    end
+                end
             end
-        end
-    end
-
-    configSection:AddButton({text = 'Load', confirm = true, callback = function()
-        library:LoadConfig(library.flags.selectedconfig);
-    end}):AddButton({text = 'Save', confirm = true, callback = function()
-        library:SaveConfig(library.flags.selectedconfig);
-    end})
-
-    configSection:AddButton({text = 'Create', confirm = true, callback = function()
-        if library:GetConfig(library.flags.configinput) then
-            library:SendNotification('Config \''..library.flags.configinput..'\' already exists.', 5, c3new(1,0,0));
-            return
-        end
-        writefile(self.cheatname..'/'..self.gamename..'/configs/'..library.flags.configinput.. self.fileext, http:JSONEncode({}));
-        refreshConfigs()
-    end}):AddButton({text = 'Delete', confirm = true, callback = function()
-        if library:GetConfig(library.flags.selectedconfig) then
-            delfile(self.cheatname..'/'..self.gamename..'/configs/'..library.flags.selectedconfig.. self.fileext);
-            refreshConfigs()
-        end
-    end})
-
-    refreshConfigs()
-
+        
+            configuration_section:AddBox({text = "Config Name", flag = "configinput"})
+            configuration_section:AddList({text = "Config", flag = "selected_config"})
+            configuration_section:AddButton({text = "Load", confirm = true, callback = function()
+                library:LoadConfig(flags.selected_config);
+            end});:AddButton({text = "Save", confirm = true, callback = function()
+                library:SaveConfig(flags.selected_config);
+            end});
+            configuration_section:AddButton({text = "Create", confirm = true, callback = function()
+                if library:GetConfig(flags.configinput) then
+                    library:SendNotification("Config \""..flags.configinput.."\" already exists.", 5, c3new(1,0,0));
+                    return
+                end
+                writefile(library.cheatname.."/"..library.gamename.."/configs/"..flags.configinput.. library.fileext, http:JSONEncode({}));
+                refresh_configs();
+            end}):AddButton({text = "Delete", confirm = true, callback = function()
+                if library:GetConfig(flags.selectedconfig) then
+                    delfile(library.cheatname.."/"..library.gamename.."/configs/"..flags.selectedconfig.. library.fileext);
+                    refresh_configs();
+                end;
+            end});
+            configuration_section:AddButton({text = "Refresh", callback = function()
+                refresh_configs();
+            end});
+            refresh_configs();
+        end;
         -- 
         local main_section = settings:AddSection("Main", 2); do
             main_section:AddBind({text = "Open / Close", flag = "togglebind", nomouse = true, noindicator = true, bind = Enum.KeyCode.End, callback = function()
