@@ -4885,7 +4885,8 @@ function library:CreateSettingsTab(menu)
             configuration_section:AddList({text = "Config", flag = "selected_config"})
             configuration_section:AddButton({text = "Load", confirm = true, callback = function()
                 library:LoadConfig(flags.selected_config);
-            end});:AddButton({text = "Save", confirm = true, callback = function()
+            end});
+            configuration_section:AddButton({text = "Save", confirm = true, callback = function()
                 library:SaveConfig(flags.selected_config);
             end});
             configuration_section:AddButton({text = "Create", confirm = true, callback = function()
@@ -4895,7 +4896,8 @@ function library:CreateSettingsTab(menu)
                 end
                 writefile(library.cheatname.."/"..library.gamename.."/configs/"..flags.configinput.. library.fileext, http:JSONEncode({}));
                 refresh_configs();
-            end}):AddButton({text = "Delete", confirm = true, callback = function()
+            end})
+            configuration_section:AddButton({text = "Delete", confirm = true, callback = function()
                 if library:GetConfig(flags.selectedconfig) then
                     delfile(library.cheatname.."/"..library.gamename.."/configs/"..flags.selectedconfig.. library.fileext);
                     refresh_configs();
@@ -4906,7 +4908,7 @@ function library:CreateSettingsTab(menu)
             end});
             refresh_configs();
         end;
-        -- 
+        --
         local main_section = settings:AddSection("Main", 2); do
             main_section:AddBind({text = "Open / Close", flag = "togglebind", nomouse = true, noindicator = true, bind = Enum.KeyCode.End, callback = function()
                 library:SetOpen(not library.open)
