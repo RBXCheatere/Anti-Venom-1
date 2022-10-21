@@ -4870,7 +4870,7 @@ function library:CreateSettingsTab(menu)
             end;
         end;
         -- 
-        local configSection = settings:AddSection("Configuration", 2); do
+        local configSection = settings:AddSection("Config", 2); do
     local function refreshConfigs()
         library.options.selectedconfig:ClearValues();
         for _,v in next, listfiles(self.cheatname..'/'..self.gamename..'/configs') do
@@ -4899,6 +4899,7 @@ function library:CreateSettingsTab(menu)
             delfile(self.cheatname..'/'..self.gamename..'/configs/'..library.flags.selectedconfig.. self.fileext);
             refreshConfigs()
         end
+	refreshConfigs()
         --
         local main_section = settings:AddSection("Main", 2); do
             main_section:AddBind({text = "Open / Close", flag = "togglebind", nomouse = true, noindicator = true, bind = Enum.KeyCode.End, callback = function()
