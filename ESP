@@ -1,4 +1,43 @@
-
+-- Framework
+local Framework = {}; Framework.__index = Framework; do
+    function Framework:Round_V2(V2)
+        return Vector2.new(math.floor(V2.X + 0.5), math.floor(V2.Y + 0.5))
+    end
+    function Framework:V3_To_V2(V3)
+        return Vector2.new(V3.X, V3.Y)
+    end
+    function Framework:Draw(Object, Properties)
+        Object = Drawing.new(Object)
+        for Property, Value in pairs(Properties) do
+            Object[Property] = Value
+        end
+        return Object
+    end
+    function Framework:Instance(Object, Properties)
+        Object = Instance.new(Object)
+        for Property, Value in pairs(Properties) do
+            Object[Property] = Value
+        end
+        return Object
+    end
+    function Framework:Get_Bounding_Vectors(Part)
+        local Part_CFrame, Part_Size = Part.CFrame, Part.Size 
+        local X, Y, Z = Part_Size.X, Part_Size.Y, Part_Size.Z
+        return {
+            TBRC = Part_CFrame * CFrame.new(X, Y * 1.3, Z),
+            TBLC = Part_CFrame * CFrame.new(-X, Y * 1.3, Z),
+            TFRC = Part_CFrame * CFrame.new(X, Y * 1.3, -Z),
+            TFLC = Part_CFrame * CFrame.new(-X, Y * 1.3, -Z),
+            BBRC = Part_CFrame * CFrame.new(X, -Y * 1.6, Z),
+            BBLC = Part_CFrame * CFrame.new(-X, -Y * 1.6, Z),
+            BFRC = Part_CFrame * CFrame.new(X, -Y * 1.6, -Z),
+            BFLC = Part_CFrame * CFrame.new(-X, -Y * 1.6, -Z),
+        };
+    end
+    function Framework:Drawing_Transparency(Transparency)
+        return 1 - Transparency
+    end
+end
 
 local esp = {
     enabled        = false;
