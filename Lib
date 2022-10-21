@@ -4796,27 +4796,38 @@ function library:init()
         end
     end
 
+    local lasttick = tick();
+    utility:Connection(runservice.RenderStepped, function(step)
+        library.stats.fps = floor(1/step)
+        library.stats.ping = stats.Network.ServerStatsItem["Data Ping"]:GetValue()
+        library.stats.sendkbps = stats.DataSendKbps
+        library.stats.receivekbps = stats.DataReceiveKbps
+
+        if (tick()-lasttick)*1000 > library.watermark.refreshrate then
+            lasttick = tick()
+            library.watermark:Update()
+        end
+    end)
+
+    self.keyIndicator = self.NewIndicator({title = 'Keybinds', pos = newUDim2(0,15,0,325), enabled = false});
+    
+    self.targetIndicator = self.NewIndicator({title = 'Target Info', pos = newUDim2(0,15,0,350), enabled = false});
+    self.targetName = self.targetIndicator:AddValue({key = 'Name     :', value = 'nil'})
+    self.targetDisplay = self.targetIndicator:AddValue({key = 'DName    :', value = 'nil'})
+    self.targetHealth = self.targetIndicator:AddValue({key = 'Health   :', value = '0'})
+    self.targetDistance = self.targetIndicator:AddValue({key = 'Distance :', value = '0m'})
+    self.targetTool = self.targetIndicator:AddValue({key = 'Weapon   :', value = 'nil'})
+
+    self:SetTheme(library.theme);
+    self:SetOpen(true);
+    self.hasInit = true
+
+
     self.keyIndicator = self.NewIndicator({title = 'Keybinds', pos = newUDim2(0,15,0,325), enabled = false});
     self:SetTheme(library.themes[1].theme);
     self:SetOpen(true);
     self.hasInit = true
 
-    --[[local res = syn.request({
-        Url = 'http://127.0.0.1:6463/rpc?v=1',
-        Method = 'POST',
-        Headers = {
-            ['Content-Type'] = 'application/json',
-            Origin = 'https://discord.com'
-        },
-        Body = game:GetService('HttpService'):JSONEncode({
-            cmd = 'INVITE_BROWSER',
-            nonce = game:GetService('HttpService'):GenerateGUID(false),
-            args = {code = 'vZRH9W3n52'}
-        })
-    })
-    if res.Success then
-        library:SendNotification('octohook | DISCORD WAS TERMED. AUTO JOINED.')
-    end]]
 end
 
 function library:CreateSettingsTab(menu)
