@@ -19,7 +19,10 @@ Utility:Connection(Library.unloaded, LPH_JIT_MAX(function()
 end))
 
 --Divider
-Aimbot:AddSeparator({text = 'seperator'})
+Aimbotsection:AddSeparator({text = 'seperator'})
+
+--Text
+Aimbotsection:AddText({text = "flying. Use fly like spider or you will", flag = "flyText2", enabled = false})
 
 --Change ESP Models
 local chars_upvalue = getupvalue(getrenv()._G.Player.GetPlayerModel, 1)
