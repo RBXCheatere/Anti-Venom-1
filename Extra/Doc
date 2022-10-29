@@ -51,7 +51,7 @@ Aimbotsection:AddSlider({text = "Slider", flag = "", enabled = true, suffix = ""
 end})
 
 --New Dropdown
-Aimbotsection:AddList({text = "Dropdown", flag = "",  enabled = true, tooltip = "", selected = "", values = {"", ""}, risky = false, callback = function(Option)
+Aimbotsection:AddList({text = "Dropdown", flag = "",  enabled = true, tooltip = "", selected = "", values = {"", ""}, risky = false, multi = false, callback = function(Option)
 
 end})
 
