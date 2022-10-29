@@ -1,5 +1,5 @@
 --Make something visible or not
-    Options.what_u_want_to_be_visible_or_not.enabled = state
+    Options.what_u_want_to_be_visible_or_not.enabled = State
     Options.toggle_flag_or_list_flag:UpdateOptions()
     section_name:UpdateSections()
 
