@@ -41,7 +41,7 @@ Aimbotsection:AddButton({text = "Button", risky = false, callback = function()
 end});
 
 --New Toggle
-Aimbotsection:AddToggle({text = "Toggle", tooltip = "", flag = "", risky = false, callback = function(State)
+Aimbotsection:AddToggle({text = "Toggle", tooltip = "", flag = "", enabled = true, risky = false, callback = function(State)
 
 end})
 
@@ -51,12 +51,12 @@ Aimbotsection:AddSlider({text = "Slider", flag = "", enabled = true, suffix = ""
 end})
 
 --New Dropdown
-Aimbotsection:AddList({text = "Dropdown", flag = "", tooltip = "", enabled = true, selected = "", values = {"", ""}, risky = false, callback = function(Option)
+Aimbotsection:AddList({text = "Dropdown", flag = "",  enabled = true, tooltip = "", selected = "", values = {"", ""}, risky = false, callback = function(Option)
 
 end})
 
 --New KeyBind
-Aimbotsection:AddBind({text = "KeyBind", flag = "", tooltip = "", mode = "toggle", risky = false, callback = function(State)
+Aimbotsection:AddBind({text = "KeyBind", flag = "", enabled = true tooltip = "", mode = "toggle", risky = false, callback = function(State)
 
 end});
 
