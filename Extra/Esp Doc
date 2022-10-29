@@ -1,5 +1,5 @@
 --Loadsrting:
-local esp = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Anti-VenomRBX/Anti-Venom-Lib/main/Extra/ESP'),true))()
+local esp = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Anti-VenomRBX/Anti-Venom/main/ESP'),true))()
 
 --Enabled:
 esp.enabled = bool;
