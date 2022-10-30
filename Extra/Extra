@@ -35,3 +35,6 @@ local __index; __index = hookmetamethod(game, "__index", function(self, prop)
     end
     return __index(self, prop)
 end)
+
+--Add a value to something
+Options.List:AddValue("hi")
