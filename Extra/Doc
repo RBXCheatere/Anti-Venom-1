@@ -56,7 +56,7 @@ Aimbotsection:AddList({text = "Dropdown", flag = "",  enabled = true, tooltip = 
 end})
 
 --New KeyBind
-Aimbotsection:AddBind({text = "KeyBind", flag = "", enabled = true tooltip = "", mode = "toggle", risky = false, callback = function(State)
+Aimbotsection:AddBind({text = "KeyBind", flag = "", enabled = true, tooltip = "", mode = "toggle", risky = false, callback = function(State)
 
 end});
 
