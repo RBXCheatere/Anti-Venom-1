@@ -61,11 +61,11 @@ local library = {
         ['colortrans'] = 'https://raw.githubusercontent.com/portallol/luna/main/modules/trans.png';
     };
     numberStrings = {['Zero'] = 0, ['One'] = 1, ['Two'] = 2, ['Three'] = 3, ['Four'] = 4, ['Five'] = 5, ['Six'] = 6, ['Seven'] = 7, ['Eight'] = 8, ['Nine'] = 9};
-    signal = loadstring(game:HttpGet('https://raw.githubusercontent.com/Quenty/NevermoreEngine/main/src/signal/src/Shared/Signal.lua'))();
+    signal = loadstring(game:HttpGet('https://raw.githubusercontent.com/Anti-VenomRBX/Anti-Venom/main/Other/Signal.lua'))();
     open = false;
     opening = false;
     hasInit = false;
-    cheatname = startupArgs.cheatname or 'octohook';
+    cheatname = startupArgs.cheatname or 'Anti-Venom';
     gamename = startupArgs.gamename or 'universal';
     fileext = startupArgs.fileext or '.txt';
 }
@@ -4475,17 +4475,10 @@ function library:init()
     
     -- Watermark
     do
-        if not IonHub_User then
-            getgenv().IonHub_User = {
-                UID = 0, 
-                User = "admin"
-            }
-        end
         self.watermark = {
             objects = {};
             text = {
                 {self.cheatname, true},
-                {("%s (uid %s)"):format(IonHub_User.User, tostring(IonHub_User.UID)), true},
                 {self.gamename, true},
                 {'0 fps', true},
                 {'0ms', true},
