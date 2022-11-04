@@ -1924,6 +1924,69 @@ function library:init()
             end
         end
 
+        function window:AddTab(text, order)
+            local tab = {
+                text = text;
+                order = order or #self.tabs+1;
+                callback = function() end;
+                objects = {};
+                sections = {};
+            }
+
+            table.insert(self.tabs, tab);
+
+            --- Create Objects ---
+            do
+                local objs = tab.objects;
+                local z = library.zindexOrder.window + 5;
+
+                objs.background = utility:Draw('Square', {
+                    Size = newUDim2(0,50,1,0);
+                    Parent = self.objects.tabHolder;
+                    ThemeColor = 'Unselected Tab Background';
+                    ZIndex = z;
+                })
+
+                objs.innerBorder = utility:Draw('Square', {
+                    Size = newUDim2(1,2,1,2);
+                    Position = newUDim2(0,-1,0,-1);
+                    ThemeColor = 'Border 1';
+                    ZIndex = z-1;
+                    Parent = objs.background;
+                })
+    
+                objs.outerBorder = utility:Draw('Square', {
+                    Size = newUDim2(1,2,1,2);
+                    Position = newUDim2(0,-1,0,-1);
+                    ThemeColor = 'Border 3';
+                    ZIndex = z-2;
+                    Parent = objs.innerBorder;
+                })
+
+                objs.topBorder = utility:Draw('Square', {
+                    Size = newUDim2(1,0,0,1);
+                    ThemeColor = 'Unselected Tab Background';
+                    ZIndex = z+1;
+                    Parent = objs.background;
+                })
+
+                objs.text = utility:Draw('Text', {
+                    ThemeColor = 'Unselected Tab Text';
+                    Text = text;
+                    Size = 13;
+                    Font = 2;
+                    ZIndex = z+1;
+                    Outline = true;
+                    Center = true;
+                    Parent = objs.background;
+                })
+
+                utility:Connection(objs.background.MouseButton1Down, function()
+                    tab:Select();
+                end)
+
+            end
+
             function tab:AddSection(text, side, order)
                 local section = {
                     text = tostring(text);
