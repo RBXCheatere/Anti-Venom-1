@@ -1463,7 +1463,7 @@ function library:init()
             })
 
             objs.tabHolder = utility:Draw('Square', {
-                Size = newUDim2(1,0,0,1);--newUDim2(1,0,0,20);
+                Size = newUDim2(1,0,0,20);
                 Position = newUDim2(0,0,0,-21);
                 Parent = objs.groupBackground;
                 Transparency = 0;
